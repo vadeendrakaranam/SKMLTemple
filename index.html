@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanaka Mahalakshmi Temple</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8e7;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 60px;
+    }
+    header {
+      background-color: #a52a2a;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      font-size: 25px;  /* Bigger for desktop */
+
+    }
+    .lang-toggle, .mute-toggle {
+      background-color: goldenrod;
+      color: black;
+      border: none;
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      position: absolute;
+    }
+    .lang-toggle { right: 100px; }
+    .mute-toggle { right: 20px; }
+
+    nav {
+      background-color: goldenrod;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      border: 2px solid black;
+    }
+    nav a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      background-color: #b22222;
+      color: white;
+    }
+    .carousel {
+      width: fit-content;
+      height: 400px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      border: 3px solid maroon;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .carousel img {
+      width: 600px;
+      height: 400px;
+      object-fit: cover;
+      display: none;
+    }
+    .carousel img.active { display: block; }
+    .content {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #a52a2a;
+      color: white;
+      border: 2px solid black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    h3 { text-align: center; }
+    /* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  header h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .lang-toggle, .mute-toggle {
+    position: static;
+    margin: 5px 5px 0 0;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    padding: 10px;
+    border-top: 1px solid #000;
+    text-align: center;
+  }
+
+  .carousel {
+    width: 100%;
+    height: auto;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  header h2 {
+    font-size: 16px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .lang-toggle, .mute-toggle {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h2 class="lang-en" id="site-title-en">Sri Kanaka Mahalakshmi Temple, Vizag</h2>
+    <h2 class="lang-te" id="site-title-te" style="display:none;">శ్రీ కనక మహాలక్ష్మి అమ్మవారి దేవస్థానం, విశాఖపట్నం</h2>
+  </div>
+  <button class="lang-toggle" onclick="toggleLanguage()">తెలుగు</button>
+  <button class="mute-toggle" onclick="toggleMute()">🔊</button>
+</header>
+
+<nav id="navbar">
+  <a href="#" onclick="showSection('home')" data-en="Home" data-te="హోమ్">Home</a>
+  <a href="#" onclick="showSection('about')" data-en="Temple History" data-te="ఆలయ చరిత్ర">Temple History</a>
+  <a href="#" onclick="showSection('pooja')" data-en="Daily Rituals" data-te="నిత్య పూజా కార్యక్రమాలు">Daily Rituals</a>
+  <a href="#" onclick="showSection('sevas')" data-en="Sevas & Donations" data-te="సేవలు మరియు విరాళాలు">Sevas & Donations</a>
+  <a href="#" onclick="showSection('news')" data-en="News" data-te="తాజా సమాచారం">Updates</a>
+  <a href="#" onclick="showSection('contact')" data-en="Contact" data-te="సంప్రదించండి">Contact</a>
+  <a href="#" onclick="showSection('location')" data-en="Location" data-te="ఎలా చేరుకోవాలి">Location</a>
+</nav>
+
+<div class="content">
+
+  <!-- Home -->
+  <div id="home" class="section active">
+    <div class="carousel">
+      <img src="1.jpg" class="active">
+      <img src="2.jpg">
+      <img src="3.jpg">
+      <img src="4.jpg">
+
+    </div><br><br>
+
+    <div class="lang-en">
+      <h3>Dear devotees, Welcome to the official website of Sri Kanaka Mahalakshmi Temple, Vizag</h3>
+    </div>
+    <div class="lang-te" style="display:none;">
+      <h3>ప్రియమైన భక్తులారా, శ్రీ కనక మహాలక్ష్మీ అమ్మవారి దేవస్థానం, విశాఖపట్నం వెబ్‌సైట్‌కు స్వాగతం.</h3>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="section">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+      <img src="5.jpg" alt="Sri Kanaka Mahalakshmi Temple" style="width: 400px; height: auto;">
+      <div style="flex: 1;">
+        <div class="lang-en">
+          <h2>Temple History</h2>
+<p>Sri Kanaka Mahalakshmi Ammavaru Temple, located in the historic Burujupeta area of Visakhapatnam, Andhra Pradesh, is one of the most ancient and revered temples in the region. Based on local traditions and historical evidence, the temple is believed to date back to the 11th century. According to legend, during an excavation in the area centuries ago, a sacred idol of the goddess emerged mysteriously from the earth. The local people recognized it as a swayambhu (self-manifested) form of Goddess Kanaka Mahalakshmi. From that moment on, the deity has been worshipped as the Grama Devata (presiding deity) of Visakhapatnam. It is also believed that the temple received patronage during the rule of the great Vijayanagara Empire, reflecting its historical and cultural importance. Devotees have long believed that the goddess safeguards the city and bestows blessings of peace, prosperity, and protection upon her people.</p><p>A unique feature of this temple is that the idol of the goddess is installed in the open, without a traditional sanctum or roof, allowing devotees direct and uninterrupted darshan at all times. This symbolizes the goddess's ever-accessible and compassionate nature. The temple witnesses heavy footfall, especially on Fridays, and even more so during the auspicious month of Margasira (November–December), which is considered sacred to the goddess. Thousands of devotees from across Andhra Pradesh and nearby states participate in the Margasira Lakshmi Vratams, seeking her divine blessings for wealth, happiness, and well-being. It is widely believed that prayers offered with devotion at this temple help fulfill wishes and bring prosperity into one’s life. Over the centuries, Sri Kanaka Mahalakshmi Ammavaru has become more than a spiritual symbol — she is regarded as the guardian deity and cultural pride of Visakhapatnam.</p>        </div>
+        <div class="lang-te" style="display:none;">
+          <h2>ఆలయ చరిత్ర</h2>
+<p>శ్రీ కనక మహాలక్ష్మి అమ్మవారి ఆలయం, విశాఖపట్నం నగరంలోని బురుజుపేట అనే పాతబస్తీ ప్రాంతంలో ప్రాచీన కాలం నుంచి వెలసి ఉన్న పవిత్ర క్షేత్రం. శాసనాల ఆధారంగా మరియు స్థానిక పరంపరల ప్రకారం, ఈ ఆలయం అనుమానాస్పదంగా 11వ శతాబ్దానికి చెందినదిగా భావించబడుతోంది. కథనం ప్రకారం, అప్పటి కాలంలో ఈ ప్రాంతంలో జరిగిన తవ్వకాల్లో భూమిలోంచి ఓ పవిత్ర విగ్రహం బయటపడింది. ఈ విగ్రహం శ్రీ కనక మహాలక్ష్మి అమ్మవారి స్వయంభువ మూర్తిగా గుర్తించబడి, అక్కడే భక్తులు పూజ ప్రారంభించారు. అప్పటినుంచి అమ్మవారు విశాఖ నగరానికి నగరాధిష్ఠాన దేవతగా పూజింపబడుతున్నారు. విజయనగర సామ్రాజ్య కాలంలో కూడా ఈ ఆలయానికి రాజపోషణ లభించినట్లు చారిత్రక ఆధారాలు సూచిస్తున్నాయి. విశాఖపట్నంలోని పాత ప్రజలు అమ్మవారిని తమ కాపాడే తల్లిగా కొలచేవారు. ప్రజల అభ్యుదయాని</p><p>ఈ ఆలయం విశిష్టత ఏమిటంటే – ఇక్కడ అమ్మవారి విగ్రహం ఒక సంప్రదాయ గర్భగృహంలో కాకుండా, ఓపెన్‌గా, అంటే పైకి నిర్మాణం లేకుండా ప్రతిష్ఠించబడి ఉంది. ఇది భక్తుల భగవంతుడితో నేరుగా, నిరంతరం సంబంధాన్ని సూచిస్తుంది. ప్రతి శుక్రవారం ఆలయం ప్రత్యేక పూజలతో మార్మోగుతుంది. అయితే మార్గశిర మాసం (నవంబర్-డిసెంబర్) అమ్మవారికి అత్యంత ప్రీతికరమైనదిగా భావించబడుతుంది. ఈ మాసంలో శ్రీ లక్ష్మీ వ్రతాలు నిర్వహించడానికి విశాఖ뿐 కాదు, రాష్ట్రం నలుమూలల నుంచీ భక్తులు పెద్ద సంఖ్యలో చేరుతారు. అమ్మవారి దర్శనం వల్ల సంపద, సౌభాగ్యం, ఆరోగ్యం కలుగుతాయనే విశ్వాసం ఉంది. తలపెట్టిన కోరికలు నెరవేరేలా అమ్మవారు దీవిస్తారని, ఆమె కృప వల్ల నగరానికి శ్రేయస్సు చేకూరుతుందని అనేకమంది అనుభవంగా చెబుతారు. అలా ఈ ఆలయం, ఒక ఆధ్యాత్మిక కేంద్రంగా మాత్రమే కాకుండా, విశాఖపట్నం నగరానికి గౌరవప్రదమైన కీర్తి చిహ్నంగా నిలిచింది.</p>        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other sections -->
+<div id="pooja" class="section">
+  <div class="lang-en">
+    <h2>Daily Pooja Timings</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse; text-align:left;">
+      <tr><th>Seva Name</th><th>Timings</th></tr>
+      <tr><td>Panchamruthabhishekam, Sahasranamarchana, Balabhoga Nivedhana</td><td>5:00 AM – 6:00 AM</td></tr>
+      <tr><td>Sarva Darshanams</td><td>6:00 AM – 11:00 AM</td></tr>
+      <tr><td>Panchamruthabhishekam, Ashtottaranamarchana, Rajabhogam, Mahanivedhana</td><td>11:30 AM – 12:00 PM</td></tr>
+      <tr><td>Sarva Darshanams</td><td>12:00 PM – 5:30 PM</td></tr>
+      <tr><td>Panchamruthabhishekam, Ashtottara Sathanamarchana, Sayam Nivedhana</td><td>6:00 PM – 6:30 PM</td></tr>
+      <tr><td>Sarva Darshanams</td><td>6:30 PM – 5:00 AM (next day)</td></tr>
+      <tr><td>Kumkum Pooja (Available to devotees throughout the day)</td><td>7:00 AM – 9:00 PM</td></tr>
+      <tr><td>Ksheerabhishekam Pooja (Performed only on Fridays)</td><td>8:00 AM – 9:00 AM (Fridays)</td></tr>
+    </table>
+  </div>
+
+  <div class="lang-te" style="display:none;">
+    <h2>రోజువారీ పూజలు / సేవల సమయాలు</h2>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse; text-align:left;">
+      <tr><th>సేవ పేరు</th><th>సమయం</th></tr>
+      <tr><td>పంచామృతాభిషేకం, సహస్రనామార్చన, బాలభోగ నివేదన</td><td>ఉ. 5:00 – 6:00</td></tr>
+      <tr><td>సర్వదర్శనాలు</td><td>ఉ. 6:00 – 11:00</td></tr>
+      <tr><td>పంచామృతాభిషేకం, అష్టోత్తరనామార్చన, రాజభోగం, మహానివేదన</td><td>ఉ. 11:30 – మ. 12:00</td></tr>
+      <tr><td>సర్వదర్శనాలు</td><td>మ. 12:00 – సా. 5:30</td></tr>
+      <tr><td>పంచామృతాభిషేకం, అష్టోత్తర శతనామార్చన, సాయంనివేదన</td><td>సా. 6:00 – 6:30</td></tr>
+      <tr><td>సర్వదర్శనాలు</td><td>సా. 6:30 – మరుసటి ఉ. 5:00</td></tr>
+      <tr><td>కుంకుమ పూజ (భక్తులు ఏ సమయంలోనైనా చేయవచ్చు)</td><td>ఉ. 7:00 – రా. 9:00</td></tr>
+      <tr><td>క్షీరాభిషేకం పూజ (ప్రతి శుక్రవారం మాత్రమే)</td><td>ఉ. 8:00 – 9:00 (శుక్రవారం)</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<div id="sevas" class="section">
+  <div class="lang-en">
+    <h2>Sevas & Donations</h2>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse; text-align:left;">
+      <tr><th>Seva Name</th><th>Price (₹)</th></tr>
+      <tr><td>Aayushu Homa</td><td>2516</td></tr>
+      <tr><td>Astadhalapadmaradhana</td><td>1116</td></tr>
+      <tr><td>Kumkumapooja</td><td>-</td></tr>
+      <tr><td>Samuhika Ashtotthara Kumkumarchana</td><td>50</td></tr>
+      <tr><td>Margasiramasam Ksheerabhishekam</td><td>1116</td></tr>
+      <tr><td>Margasiramasam Panchamrutham (Other Than Thursday)</td><td>2500</td></tr>
+      <tr><td>Panchamruthabhishekam</td><td>1000</td></tr>
+      <tr><td>Paroksha Aayushu Homa</td><td>2516</td></tr>
+      <tr><td>Paroksha Astadhalapadmaradhana</td><td>1116</td></tr>
+      <tr><td>Paroksha Kumkumapooja</td><td>50</td></tr>
+      <tr><td>Paroksha Margasiramasam Ksheerabhishekam</td><td>1116</td></tr>
+      <tr><td>Paroksha Margasiramasam Panchamrutham (Other Than Thursday)</td><td>2500</td></tr>
+      <tr><td>Paroksha Panchamruthabhishekam</td><td>1000</td></tr>
+      <tr><td>Paroksha Sri Chakranavavarchana (Pournami day)</td><td>2516</td></tr>
+      <tr><td>Paroksha Tulasi Pooja</td><td>1500</td></tr>
+      <tr><td>Sri Lakshmi Pooja</td><td>400</td></tr>
+      <tr><td>Sri Lakshmi Pooja (Sravana Masam)</td><td>400</td></tr>
+      <tr><td>Sri Chakranavavarchana (Pournami day)</td><td>2516</td></tr>
+    </table>
+  </div>
+
+  <div class="lang-te" style="display:none;">
+    <h2>సేవలు & విరాళాలు</h2>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse: collapse; text-align:left;">
+      <tr><th>సేవ పేరు</th><th>ధర (₹)</th></tr>
+      <tr><td>ఆయుషు హోమం</td><td>2516</td></tr>
+      <tr><td>అష్టధళపద్మరాధన</td><td>1116</td></tr>
+      <tr><td>కుంకుమ పూజ</td><td>-</td></tr>
+      <tr><td>సామూహిక అష్టోత్తర కుంకుమార్చన</td><td>50</td></tr>
+      <tr><td>మార్గశిరమాసం క్షీరాభిషేకం</td><td>1116</td></tr>
+      <tr><td>మార్గశిరమాసం పంచామృతం (గురువారం తప్ప)</td><td>2500</td></tr>
+      <tr><td>పంచామృతాభిషేకం</td><td>1000</td></tr>
+      <tr><td>పరోక్ష ఆయుషు హోమం</td><td>2516</td></tr>
+      <tr><td>పరోక్ష అష్టధళపద్మరాధన</td><td>1116</td></tr>
+      <tr><td>పరోక్ష కుంకుమ పూజ</td><td>50</td></tr>
+      <tr><td>పరోక్ష మార్గశిరమాసం క్షీరాభిషేకం</td><td>1116</td></tr>
+      <tr><td>పరోక్ష మార్గశిరమాసం పంచామృతం (గురువారం తప్ప)</td><td>2500</td></tr>
+      <tr><td>పరోక్ష పంచామృతాభిషేకం</td><td>1000</td></tr>
+      <tr><td>పరోక్ష శ్రీచక్రానవవర్ణాచన (పౌర్ణమి రోజు)</td><td>2516</td></tr>
+      <tr><td>పరోక్ష తులసి పూజ</td><td>1500</td></tr>
+      <tr><td>శ్రీ లక్ష్మి పూజ</td><td>400</td></tr>
+      <tr><td>శ్రీ లక్ష్మి పూజ (శ్రావణ మాసం)</td><td>400</td></tr>
+      <tr><td>శ్రీచక్రానవవర్ణాచన (పౌర్ణమి రోజు)</td><td>2516</td></tr>
+    </table>
+  </div>
+</div>
+
+<div id="news" class="section">
+  <h3 class="lang-en">Latest News Coming Soon</h3>
+  <h3 class="lang-te" style="display:none;">తాజా వార్తలు త్వరలో రాబోతున్నాయి</h3>
+</div>
+
+<div id="contact" class="section">
+
+  <!-- Common image style -->
+  <style>
+    .contact-image {
+      display: block;
+      margin: 0 auto;
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+
+<!-- English -->
+<div class="lang-en">
+  <center>
+    <h3>Contact Us</h3>
+    <img src="6.jpg" alt="Temple Image" class="contact-image" width="60px" height="100px">
+    <p>
+      Phone: 
+      <a href="tel:+918912566515">0891-2566515</a>, 
+      <a href="tel:+918912731250">0891-2731250</a>
+    </p>
+    <p>
+      Facebook:
+      <a href="https://www.facebook.com/srikanakamahalakshmitemple/" target="_blank">
+        Sri Kanaka Mahalakshmi Temple Facebook Page
+      </a>
+    </p>
+  </center>
+</div>
+
+<!-- Telugu -->
+<div class="lang-te" style="display:none;">
+  <center>
+    <h3>మమ్మల్ని సంప్రదించండి</h3>
+    <img src="6.jpg" alt="Temple Image" class="contact-image" width="60px" height="100px">
+    <p>
+      ఫోన్: 
+      <a href="tel:+918912566515">0891-2566515</a>, 
+      <a href="tel:+918912731250">0891-2731250</a>
+    </p>
+    <p>
+      ఫేస్‌బుక్:
+      <a href="https://www.facebook.com/srikanakamahalakshmitemple/" target="_blank">
+        శ్రీ కనక మహాలక్ష్మి ఆలయం ఫేస్‌బుక్ పేజీ
+      </a>
+    </p>
+  </center>
+</div>
+
+</div>
+
+<div id="location" class="section">
+  <!-- English -->
+  <div class="lang-en">
+    <p>Address: Sri Kanaka Mahalakshmi Temple, Burujupeta, Visakhapatnam, Andhra Pradesh, India</p>
+    <p>Nearest Landmark: Near Old Town Area</p>
+     <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.622184126543!2d83.30033197515267!3d17.713312983339926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39588b46e7c0e3%3A0x6e97f1bb6e798d1e!2sBurujupeta%2C%20Chengal%20Rao%20Peta%2C%20Port%20Area%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530001!5e0!3m2!1sen!2sin!4v1691488876370!5m2!1sen!2sin" 
+        width="100%" 
+        height="350" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <p>Google Maps: 
+      <a href="https://maps.google.com/?q=Sri+Kanaka+Mahalakshmi+Temple+Visakhapatnam" target="_blank">
+        View on Google Maps
+      </a>
+    </p>
+  </div>
+
+  <!-- Telugu -->
+  <div class="lang-te" style="display:none;">
+    <p>చిరునామా: శ్రీ కనక మహాలక్ష్మి ఆలయం, బురుజుపేట, విశాఖపట్నం, ఆంధ్రప్రదేశ్, భారతదేశం</p>
+    <p>అతి సమీప గుర్తు: పాత పట్టణ ప్రాంతం</p>
+     <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.622184126543!2d83.30033197515267!3d17.713312983339926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39588b46e7c0e3%3A0x6e97f1bb6e798d1e!2sBurujupeta%2C%20Chengal%20Rao%20Peta%2C%20Port%20Area%2C%20Visakhapatnam%2C%20Andhra%20Pradesh%20530001!5e0!3m2!1sen!2sin!4v1691488876370!5m2!1sen!2sin" 
+        width="100%" 
+        height="350" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <p>గూగుల్ మ్యాప్స్: 
+      <a href="https://maps.google.com/?q=Sri+Kanaka+Mahalakshmi+Temple+Visakhapatnam" target="_blank">
+        గూగుల్ మ్యాప్స్ లో చూడండి
+      </a>
+    </p>
+  </div>
+</div>
+
+</div>
+
+<audio id="templeSong" autoplay loop>
+  <source src="1.mp3" type="audio/mpeg">
+</audio>
+
+<footer>
+  <p>&copy; 2025 Sri Kanaka Mahalakshmi Temple, Vizag</p>
+</footer>
+
+<script>
+  let currentLanguage = 'en';
+  let isMuted = false;
+
+  function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'te' : 'en';
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.textContent = link.getAttribute(`data-${currentLanguage}`);
+    });
+    document.querySelector(".lang-toggle").innerText = currentLanguage === 'en' ? 'తెలుగు' : 'English';
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = currentLanguage === 'en' ? 'block' : 'none');
+    document.querySelectorAll('.lang-te').forEach(el => el.style.display = currentLanguage === 'te' ? 'block' : 'none');
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+    const selected = document.getElementById(id);
+    if (selected) selected.classList.add('active');
+    const audio = document.getElementById('templeSong');
+    audio?.play().catch(() => console.log("Autoplay blocked"));
+  }
+
+  function toggleMute() {
+    const audio = document.getElementById('templeSong');
+    if (!audio) return;
+    isMuted = !isMuted;
+    audio.muted = isMuted;
+    document.querySelector('.mute-toggle').textContent = isMuted ? '🔇' : '🔊';
+  }
+
+  const images = document.querySelectorAll('.carousel img');
+  let currentIndex = 0;
+  setInterval(() => {
+    if (images.length === 0) return;
+    images[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add('active');
+  }, 3000);
+
+  window.onload = () => showSection('home');
+</script>
+
+</body>
+</html>
